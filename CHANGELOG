@@ -1,3 +1,18 @@
+1.9-2
+- gtkDevice now returns an error in the absense of RGtk
+- Added PACKAGE argument to all foreign function calls, conforming to 
+  R CMD check
+
+1.9-1
+_ Graphics engine changes (from Paul Murrell) folded in
+- New naming convention. Match the version number of the package to the
+  R version. This is because gtkDevice still relies on unstable/undocumented
+  parts of the R API and is sensitive to changes in the graphics engine
+
+0.5-4
+- Clipping rectangle setting now uncommented.
+- .C() calls use PACKAGE argument to avoid symbol in base.
+
 0.5
 - Porting to gtk+ 2.0
 
