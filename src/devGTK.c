@@ -258,6 +258,9 @@ static gint SetBaseFont(gtkDesc *gtkd)
 
     gtkd->font = RGTKLoadFont (gtkd->fontface, gtkd->fontsize);
 
+    if(gtkd->wgc == NULL)
+	    return(1);
+
     if(gtkd->font != NULL) {
 	gdk_gc_set_font(gtkd->wgc, gtkd->font);
 	return 1;
@@ -1092,7 +1095,7 @@ GTKDeviceDriver(DevDesc *odd, char *display, double width,
 
     /* font loading */
     ps = pointsize;
-    if(ps < 6 || ps > 24) ps = 12;
+    if(ISNAN(ps) || ps < 6 || ps > 24) ps = 12;
     ps = 2 * (ps / 2);
     gtkd->fontface = -1;
     gtkd->fontsize = -1;
@@ -1213,7 +1216,7 @@ GTKDeviceFromWidget(DevDesc *odd, char *widget, double width, double height, dou
 
     /* font loading */
     ps = pointsize;
-    if(ps < 6 || ps > 24) ps = 12;
+    if(ISNAN(ps) < 6 || ps > 24) ps = 12;
     ps = 2 * (ps / 2);
     gtkd->fontface = -1;
     gtkd->fontsize = -1;
